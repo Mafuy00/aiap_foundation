@@ -193,3 +193,58 @@ The goal is to find a balance between bias and variance that minimises the total
 ![Illustration of the Bias-Variance Tradeoff in Model Development](Fig1.5.3.png)
 This figure depicts the delicate equilibrium that must be achieved between model simplicity (leading to high bias) and complexity (resulting in high variance) to minimise total error. It highlights the critical goal of developing a prediction model that neither overfits nor underfits, emphasising the significance of finding the optimal balance for creating accurate and reliable machine learning models.
 </p>
+
+<h4>Extra:</h4>
+Visit the Scikit-learn documentation on overfitting vs. underfitting to read how you can use linear regression with polynomial features to approximate nonlinear functions.
+
+<h2>Ridge Regression</h2>
+<h3>Regularization for Linear Regression</h3>
+<p>
+In the world of machine learning, we often come across various techniques to build models that effectively capture the underlying patterns in our data. One straightforward approach is to use all available predictors (input variables) to fit a linear model. However, simply including every predictor can sometimes lead to models that don't perform well on new data because they overfit the training data.
+
+An effective alternative is to apply regularization, a technique that shrinks some of the coefficient estimates towards 0. In this context, coefficient refers to the values that the algorithm learns from the training data to define the relationship between each predictor (input variable) and the target variable (output).
+
+At first, it might not seem intuitive that restricting our model coefficients could lead to improvements. Yet, it's been found that this process of shrinking the coefficients can considerably reduce their variance (remember that high variance often leads to overfitted models), enhancing the model's ability to predict more accurately on unseen data.
+
+Regularization introduces a penalty on the size of coefficients. Instead of allowing them to reach any value, it encourages smaller, more stable coefficients. This helps in several ways:
+
+<li>Multicollinearity: When independent variables (predictors) are highly correlated, regularization can help by shrinking the coefficients of correlated predictors, reducing the model's sensitivity to these correlations.</li>
+<li>Model Complexity: Regularization reduces the complexity of the model by penalizing large coefficients, leading to simpler and more interpretable models.</li>
+<li>Overfitting Prevention: By penalizing large coefficients, regularization helps prevent the model from fitting the noise in the training data, ensuring better performance on new, unseen data.</li>
+
+There are two common types of regularization techniques used in linear regression:
+
+<ol>
+<li>Ridge Regression (L2 Regularization)</li>
+<li>Lasso Regression (L1 Regularization)</li>
+</ol>
+
+</p>
+
+<h3>Ridge Regression</h3>
+<p>
+Ridge regression is a type of linear regression that includes a regularization term to prevent overfitting. Ridge regression is an extension of the traditional ordinary least squares fitting procedure, which you might recall is used to estimate coefficients ( \left(c_{0}, c_{1}, ..., c_{p} \right) ) by minimizing the residual sum of squares (RSS) or sum of squared residuals. Ridge regression modifies the OLS approach slightly by adding a penalty to the size of the coefficients. This penalty is known as the shrinkage penalty and shrinks the model coefficients towards 0. In other words, the reduction of coefficient size caused by the shrinkage penalty translates to each predictor feature having less influence on the final prediction.
+
+Ridge regression is a powerful tool to control overfitting by penalizing large coefficients, helping to achieve a better bias-variance tradeoff. By adding a regularization term, ridge regression makes your model more robust and better at generalizing to new data. Ridge regression helps in finding the optimal bias-variance tradeoff by:
+<li>Reduced Model Complexity: Large coefficients indicate a strong influence of certain features on the predictions. By shrinking these coefficients, ridge regression reduces the overall complexity of the model. This helps in preventing the model from capturing noise in the training data, which can lead to overfitting.</li>
+<li>Improved Generalization: By penalizing large coefficients, ridge regression discourages the model from fitting the training data too closely. This regularization ensures that the model can generalize better to new, unseen data. In other words, the model becomes more robust and performs better on validation or test datasets.</li>
+<li>Multicollinearity Management: In datasets where predictor variables are highly correlated (multicollinearity), the estimates of the coefficients can become unstable and exhibit high variance. Ridge regression addresses this issue by adding a penalty to the size of the coefficients, which stabilizes their estimates and reduces variance.</li>
+<li>Bias-Variance Tradeoff: Forcing the coefficients to be smaller with the regularization term introduces some bias into the model, as the true relationship might require larger coefficients for accurate representation. However, this bias is often a worthwhile tradeoff because it significantly reduces variance. The overall effect is a better balance between bias and variance, leading to improved model performance.</li>
+
+</p>
+
+<h3>Lasso Regression</h3>
+<p>
+Now that you have a solid understanding of ridge regression, let's explore another powerful technique called lasso regression, which also helps in improving model performance by balancing bias and variance.
+
+Lasso regression, like ridge regression, is a type of linear regression that includes a regularization term to prevent overfitting. However, lasso regression (which stands for Least Absolute Shrinkage and Selection Operator) modifies the traditional ordinary least squares fitting procedure by adding a penalty to the sum of the absolute values of the coefficients. This penalty not only shrinks the coefficients towards 0 but can also force some coefficients to be exactly 0, effectively performing built-in feature selection by excluding irrelevant features from the model.
+
+Lasso regression is a powerful tool to control overfitting by penalizing large coefficients and performing feature selection, helping to achieve a better bias-variance tradeoff. By adding a regularization term, lasso regression makes your model more robust and better at generalizing to new data. Lasso regression helps in finding the optimal bias-variance tradeoff by:
+
+<li>Reduced Model Complexity: Large coefficients indicate a strong influence of certain features on the predictions. By shrinking these coefficients, lasso regression reduces the overall complexity of the model. This helps in preventing the model from capturing noise in the training data, which can lead to overfitting.</li>
+<li>Improved Generalization: By penalizing large coefficients, lasso regression discourages the model from fitting the training data too closely. This regularization ensures that the model can generalize better to new, unseen data. In other words, the model becomes more robust and performs better on validation or test datasets.</li>
+<li>Feature Selection: One of the unique advantages of lasso regression is its ability to perform feature selection. By forcing some coefficients to be exactly 0, lasso regression effectively excludes irrelevant features from the model. This can lead to simpler and more interpretable models, especially when dealing with high-dimensional data.</li>
+<li>Bias-Variance Tradeoff: Forcing the coefficients to be smaller with the regularization term introduces some bias into the model, as the true relationship might require larger coefficients for accurate representation. However, this bias is often a worthwhile tradeoff because it significantly reduces variance. The overall effect is a better balance between bias and variance, leading to improved model performance.</li>
+
+
+</p>
